@@ -1,0 +1,42 @@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+data = {
+    "Company": ["LogiTrade", "ShipEase", "XpressCargo", "ClearTrade", "FreightPro"], //demo companies
+    "Services": [
+        "Freight, Customs, Finance",
+        "Freight, Tracking",
+        "Freight, Warehousing, Customs",
+        "Customs, Trade Finance",
+        "Freight, Warehousing"
+    ],
+    "Pricing_Level": ["Medium", "Low", "High", "Medium", "Low"],
+    "Avg_Customer_Rating": [4.2, 3.8, 4.5, 3.9, 4.0],
+    "Transparency_Score": [7, 5, 8, 6, 6],  # 1–10 scale
+    "Tech_Adoption": [8, 6, 9, 7, 5]        # 1–10 scale
+}
+
+df = pd.DataFrame(data)
+print("Competitor Data:\n")
+print(df)
+
+print("\nAverage Customer Rating Across Competitors:", df["Avg_Customer_Rating"].mean())
+print("Highest Rated Company:", df.loc[df["Avg_Customer_Rating"].idxmax(), "Company"])
+print("Most Transparent Company:", df.loc[df["Transparency_Score"].idxmax(), "Company"])
+print("Best Technology Adoption:", df.loc[df["Tech_Adoption"].idxmax(), "Company"])
+print("Worst technology adoption:")
+
+plt.figure(figsize=(8,5))
+plt.bar(df["Company"], df["Avg_Customer_Rating"], color="skyblue")
+plt.title("Competitor Comparison - Customer Ratings")
+plt.xlabel("Company")
+plt.ylabel("Average Rating (out of 5)")
+plt.ylim(0, 5)
+plt.show()
+plt.show()
+
+print("\n--- Insights & Recommendations ---")
+print("1. Customers prefer companies with higher transparency and tech adoption.")
+print("2. XpressCargo leads in both customer rating and innovation – key competitor.")
+print("3. ShipEase is low cost but weak in transparency – opportunity to differentiate.")
+print("4. Recommendation: Position product as SME-friendly, tech-driven, and highly transparent.")
